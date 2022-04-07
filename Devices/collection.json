@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "3e125d76-73d6-40d4-baa5-f33f84ac99ee",
+		"name": "Devices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Export CSV",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{ax_key}}",
+						"type": "text"
+					},
+					{
+						"key": "api-secret",
+						"value": "{{ax_secret}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "data",
+							"value": "{\"meta\":null,\"data\":{\"type\":\"entity_request_schema\",\"attributes\":{\"fields\":{\"devices\":[{{ax_fields}}]},\"excluded_adapters\":[],\"filter\":\"{{ax_filter}}\",\"delimiter\":\"\\\\n\",\"max_rows\":1048500,\"should_split_by_adapter\":{{ax_assest_entity_split}}}}}",
+							"description": "send this form data, if you dont wish to split by any field",
+							"type": "text"
+						},
+						{
+							"key": "data",
+							"value": "{\"meta\":null,\"data\":{\"type\":\"entity_request_schema\",\"attributes\":{\"fields\":{\"devices\":[{{ax_fields}}]},\"excluded_adapters\":[],\"filter\":\"{{ax_filter}}\",\"delimiter\":\"\\\\n\",\"max_rows\":1048500,\"field_to_split_by\":\"{{ax_field_to_split_by}}\",\"should_split_by_adapter\":{{ax_assest_entity_split}}}}}",
+							"description": "send this form data with the variable \"ax_field_to_split_by\" to split by specfic fields",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{ax_url}}/api/devices/csv",
+					"protocol": "https",
+					"host": [
+						"{{ax_url}}"
+					],
+					"path": [
+						"api",
+						"devices",
+						"csv"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ax_assest_entity_split",
+			"value": "false",
+			"type": "string"
+		},
+		{
+			"key": "ax_field_to_split_by",
+			"value": "specific_data.data.network_interfaces.ips",
+			"type": "string"
+		},
+		{
+			"key": "ax_filter",
+			"value": "((\\\"adapters_data.fortigate_adapter.id\\\" == ({\\\"$exists\\\":true,\\\"$ne\\\":\\\"\\\"})))",
+			"type": "string"
+		},
+		{
+			"key": "ax_fields",
+			"value": "\"adapters\", \"specific_data.data.name\", \"specific_data.data.hostname\", \"specific_data.data.last_seen\", \"specific_data.data.network_interfaces.mac\", \"specific_data.data.network_interfaces.ips\", \"specific_data.data.os.type\",\"labels\"",
+			"type": "string"
+		},
+		{
+			"key": "ax-key",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "ax-secret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "ax-url",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
