@@ -1,7 +1,7 @@
 # Axonius Devices API Calls
 ###### All API calls utlize the /api/devices endpoint
 
-## Collection Variables:
+## Collection Variables: 
 
 1. `ax-url` - url of Axonious Server - Required
 2. `ax-key` - api key of Axonius User - Required
