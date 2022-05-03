@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "a5813c7c-6728-4332-9b53-f6e24cf22027",
+		"name": "custom data crud operations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Custom Data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"meta\": null,\n    \"data\": {\n        \"type\": \"entities_custom_data_schema\",\n        \"attributes\": {\n            \"selection\": {\n                \"ids\": [\n                    \"623de6fad018809afa2f07e4305c90c0\"\n                ],\n                \"include\": true\n            },\n            \"filter\": \"\",\n            \"data\": {\n                \"name\": {\n                    \"predefined\": true,\n                    \"value\": \"blah 2\",\n                    \"type\": \"string\",\n                    \"title\": \"Asset Name\"\n                }\n            }\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/devices/entity_custom",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"devices",
+						"entity_custom"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Custom Data Delete",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"meta\": null,\n    \"data\": {\n        \"type\": \"entities_custom_data_schema\",\n        \"attributes\": {\n            \"selection\": {\n                \"ids\": [\n                    \"623de6fad018809afa2f07e4305c90c0\"\n                ],\n                \"include\": true\n            },\n            \"filter\": \"\",\n            \"data\": {\n                \"name\": {\n                    \"toDelete\": true\n                }\n            }\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/devices/entity_custom",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"devices",
+						"entity_custom"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Custom Data Not Predefined",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"meta\": null,\n    \"data\": {\n        \"type\": \"entities_custom_data_schema\",\n        \"attributes\": {\n            \"selection\": {\n                \"ids\": [\n                    \"623de6fad018809afa2f07e4305c90c0\"\n                ],\n                \"include\": true\n            },\n            \"filter\": \"\",\n            \"data\": {\n                \"custom_some_new_field\": {\n                    \"value\": \"This is a new field.\",\n                    \"predefined\": false,\n                    \"title\": \"Some New Field\",\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/devices/entity_custom",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"devices",
+						"entity_custom"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({key: 'api-key', value: pm.environment.get('api-key')});",
+					"pm.request.headers.add({key: 'api-secret', value: pm.environment.get('api-secret')});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
