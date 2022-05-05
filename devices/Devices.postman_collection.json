@@ -9,18 +9,7 @@
 			"name": "Export CSV",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "api-key",
-						"value": "{{ax_key}}",
-						"type": "text"
-					},
-					{
-						"key": "api-secret",
-						"value": "{{ax_secret}}",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": [
@@ -40,15 +29,99 @@
 					]
 				},
 				"url": {
-					"raw": "https://{{ax_url}}/api/devices/csv",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/api/devices/csv",
 					"host": [
-						"{{ax_url}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
 						"devices",
 						"csv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Notes To Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function validateURL(link)",
+							"{",
+							"    if (link.indexOf(\"https://\") != 0) {",
+							"        console.error(\"The baseUrl variable doesnt has https.\");",
+							"        throw new Error(\"Ensure your baseUrl variable is utlizing https and not http\")",
+							"    }",
+							"}",
+							"let url = pm.environment.get(\"baseUrl\");",
+							"validateURL(url);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"type\": \"notes_schema\",\n        \"attributes\": {\n            \"note\": \"this is a notesss3\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/devices/{{ax_device_id}}/notes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"devices",
+						"{{ax_device_id}}",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Devices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/devices",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Devices Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/devices/{{ax_device_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"devices",
+						"{{ax_device_id}}"
 					]
 				}
 			},
@@ -61,7 +134,8 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"pm.request.headers.add({key: 'api-key', value: pm.environment.get('api-key')});",
+					"pm.request.headers.add({key: 'api-secret', value: pm.environment.get('api-secret')});"
 				]
 			}
 		},
@@ -76,6 +150,11 @@
 		}
 	],
 	"variable": [
+		{
+			"key": "ax_device_id",
+			"value": "3475f92f6a04262a2a8ac03513928fad",
+			"type": "string"
+		},
 		{
 			"key": "ax_assest_entity_split",
 			"value": "false",
@@ -94,21 +173,6 @@
 		{
 			"key": "ax_fields",
 			"value": "\"adapters\", \"specific_data.data.name\", \"specific_data.data.hostname\", \"specific_data.data.last_seen\", \"specific_data.data.network_interfaces.mac\", \"specific_data.data.network_interfaces.ips\", \"specific_data.data.os.type\",\"labels\"",
-			"type": "string"
-		},
-		{
-			"key": "ax-key",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"key": "ax-secret",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"key": "ax-url",
-			"value": "",
 			"type": "string"
 		}
 	]
