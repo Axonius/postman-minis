@@ -3,13 +3,11 @@
 
 ## Collection Variables: 
 
-1. `ax-url` - url of Axonious Server - Required
-2. `ax-key` - api key of Axonius User - Required
-3. `ax-secret` - api secret of Axonius User - Required
-4. `ax_fields` - Axonius fields used for column headers - Required
-5. `ax_filter` - Axonius AQL used to filter devices
-6. `ax_assest_entity_split` - true/false - explode each row for each adapter connected to assest - Required 
-7. `ax_field_to_split_by` - Axonius field used to explode additional rows - Not Required
+1. `ax_fields` - Axonius fields used for column headers - Required
+2. `ax_filter` - Axonius AQL used to filter devices
+3. `ax_assest_entity_split` - true/false - explode each row for each adapter connected to assest - Required 
+4. `ax_field_to_split_by` - Axonius field used to explode additional rows - Not Required
+5. `ax_device_id` - Axonius Device ID for device specific operations
 
 
 ## Workflows for API Calls
