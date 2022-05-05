@@ -17,3 +17,9 @@
    * data > attributes > view > fields = `ax_fields` Collection Variable 
    * data > attributes > query > filter = `ax_filter` Collection Variable
 * If using `ax_field_to_split_by` ensure you are using the correct Request Body when issuing Call.
+
+#### Add Notes To Device
+* The collection should Error if you try to use a http address and not a https address for the baseUrl enviroment variable. If you receive a 405 Method Not Allowed, please ensure you are sending the request over port 443 (https) and not port 80 (http)
+	* ####### example:
+		http://axonius.com/devices/{{ax_device_id}}/notes - Unauthorized
+		https://axonius.com/devices/{{ax_device_id}}/notes - OK
