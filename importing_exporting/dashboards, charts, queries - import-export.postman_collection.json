@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "27f2e264-7662-4b38-b173-05fbf0a9e63e",
+		"name": "dashboards, charts, queries - import/export",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "dashboards",
+			"item": [
+				{
+					"name": "import dashboard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{api-key}}",
+								"type": "default"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api-secret}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"meta\": null,\n   \"data\": {\n       \"type\": \"import_spaces_schema\",\n       \"attributes\": {\n           \"replace\": false,\n           \"data\": {\n                \"spaces\": {\n                    \"625eeb418b3ef17006fe90de\": {\n                        \"space\": {\n                            \"_id\": {\n                                \"$oid\": \"625eeb418b3ef17006fe90de\"\n                            },\n                            \"name\": \"Import / Export Demo Space\",\n                            \"access\": {\n                                \"mode\": \"Public\",\n                                \"config\": {}\n                            },\n                            \"type\": \"custom\",\n                            \"initiated\": true,\n                            \"resource_scope_id\": null,\n                            \"panels_order\": [\n                                \"625eeb628b3ef17006fe90e0\"\n                            ]\n                        },\n                        \"charts\": {\n                            \"625eeb628b3ef17006fe90e0\": {\n                                \"_id\": {\n                                    \"$oid\": \"625eeb628b3ef17006fe90e0\"\n                                },\n                                \"name\": \"A Chart\",\n                                \"private\": false,\n                                \"metric\": \"summary\",\n                                \"size\": {\n                                    \"row\": 1,\n                                    \"column\": 1\n                                },\n                                \"view\": \"summary\",\n                                \"linked_dashboard\": null,\n                                \"config\": {\n                                    \"description\": {\n                                        \"type\": \"default\",\n                                        \"text\": \"\"\n                                    },\n                                    \"chart_color\": \"#0d5ed7\",\n                                    \"number_format\": \"float\",\n                                    \"entity\": \"devices\",\n                                    \"view\": \"\",\n                                    \"field\": {\n                                        \"filterable\": true,\n                                        \"generic\": true,\n                                        \"name\": \"specific_data.data.name\",\n                                        \"title\": \"Asset Name\",\n                                        \"type\": \"string\"\n                                    },\n                                    \"func\": \"count\",\n                                    \"timeframe\": {\n                                        \"type\": \"relative\",\n                                        \"unit\": \"day\",\n                                        \"count\": 7\n                                    }\n                                },\n                                \"description\": \"\",\n                                \"space\": {\n                                    \"$oid\": \"625eeb418b3ef17006fe90de\"\n                                },\n                                \"user_id\": {\n                                    \"$oid\": \"6251b4d03d3ada4a5db80c30\"\n                                },\n                                \"last_updated\": {\n                                    \"$date\": \"2022-04-19T17:03:30.733Z\"\n                                }\n                            }\n                        }\n                    }\n                },\n                \"devices_views\": {},\n                \"users_views\": {},\n                \"version\": \"\",\n                \"exported_at\": \"2022-04-19 17:05:46.289501\"\n            }\n       }\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/dashboard/import",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"import"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "export dashboard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{api-key}}",
+								"type": "default"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api-secret}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"meta\": null,\n   \"data\": {\n       \"type\": \"export_spaces_schema\",\n       \"attributes\": {\n           \"spaces\": [\"Import / Export Demo Space\"]\n       }\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/dashboard/export",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "charts",
+			"item": [
+				{
+					"name": "import chart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{api-key}}",
+								"type": "default"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api-secret}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"meta\": null,\n   \"data\": {\n       \"type\": \"import_charts_schema\",\n       \"attributes\": {\n           \"replace\": false,\n           \"space\": \"Import / Export Demo Space\",\n           \"create_space\": true,\n           \"data\": {\n                \"spaces\": {\n                    \"628d0d3078dd632d66d24c15\": {\n                        \"space\": {\n                            \"_id\": {\n                                \"$oid\": \"628d0d3078dd632d66d24c15\"\n                            },\n                            \"name\": \"Import / Export Demo Space\",\n                            \"access\": {\n                                \"mode\": \"Public\"\n                            },\n                            \"type\": \"custom\",\n                            \"initiated\": true,\n                            \"resource_scope_id\": null,\n                            \"panels_order\": [\n                                \"628d0d3078dd632d66d24c17\"\n                            ]\n                        },\n                        \"charts\": {\n                            \"628d0d3078dd632d66d24c17\": {\n                                \"_id\": {\n                                    \"$oid\": \"628d0d3078dd632d66d24c17\"\n                                },\n                                \"name\": \"A Chart\",\n                                \"private\": false,\n                                \"metric\": \"summary\",\n                                \"size\": {\n                                    \"row\": 1,\n                                    \"column\": 1\n                                },\n                                \"view\": \"summary\",\n                                \"linked_dashboard\": null,\n                                \"config\": {\n                                    \"description\": {\n                                        \"type\": \"default\",\n                                        \"text\": \"\"\n                                    },\n                                    \"chart_color\": \"#0d5ed7\",\n                                    \"number_format\": \"float\",\n                                    \"entity\": \"devices\",\n                                    \"view\": \"\",\n                                    \"field\": {\n                                        \"filterable\": true,\n                                        \"generic\": true,\n                                        \"name\": \"specific_data.data.name\",\n                                        \"title\": \"Asset Name\",\n                                        \"type\": \"string\"\n                                    },\n                                    \"func\": \"count\",\n                                    \"timeframe\": {\n                                        \"type\": \"relative\",\n                                        \"unit\": \"day\",\n                                        \"count\": 7\n                                    }\n                                },\n                                \"description\": \"\",\n                                \"space\": {\n                                    \"$oid\": \"628d0d3078dd632d66d24c15\"\n                                },\n                                \"user_id\": {\n                                    \"$oid\": \"625e0fda44008039123b08d7\"\n                                },\n                                \"last_updated\": {\n                                    \"$date\": \"2022-05-24T16:52:00.962Z\"\n                                }\n                            }\n                        }\n                    }\n                },\n                \"devices_views\": {},\n                \"users_views\": {},\n                \"version\": \"\",\n                \"exported_at\": \"2022-05-24 16:52:56.635115\"\n            }\n       }\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/dashboard/charts/import",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"charts",
+								"import"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "export chart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{api-key}}",
+								"type": "default"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api-secret}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"meta\": null,\n   \"data\": {\n       \"type\": \"export_charts_schema\",\n       \"attributes\": {\n           \"charts\": [\"User Discovery\"],\n           \"space\": \"Axonius Dashboard\",\n           \"export_all\": false\n       }\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/dashboard/charts/export",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"charts",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "queries",
+			"item": [
+				{
+					"name": "export query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{api-key}}",
+								"type": "default"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api-secret}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"data\": { \n        \"type\": \"export_views_schema\", \n        \"attributes\": { \n            \"queries\": [ \n                \"Devices not seen in last 30 days\" \n            ], \n            \"export_all\": false \n        } \n    } \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/devices/views/export",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"devices",
+								"views",
+								"export"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "import query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{api-key}}",
+								"type": "default"
+							},
+							{
+								"key": "api-secret",
+								"value": "{{api-secret}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"meta\": null,\n   \"data\": {\n       \"type\": \"import_views_schema\",\n       \"attributes\": {\n           \"replace\": false,\n           \"data\": {\n                \"devices_views\": {\n                    \"views\": {\n                        \"625e0fdbbc2c879a8f267fcc\": {\n                            \"_id\": {\n                                \"$oid\": \"625e0fdbbc2c879a8f267fcc\"\n                            },\n                            \"name\": \"Devices not seen in last 30 days\",\n                            \"module\": \"devices\",\n                            \"description\": \"Devices that have not been seen by any solution/adapter in the last 30 days.\",\n                            \"tags\": [\n                                \"Unmanaged Devices\"\n                            ],\n                            \"view\": {\n                                \"fields\": [\n                                    \"adapters\",\n                                    \"specific_data.data.name\",\n                                    \"specific_data.data.hostname\",\n                                    \"specific_data.data.last_seen\",\n                                    \"specific_data.data.network_interfaces.mac\",\n                                    \"specific_data.data.network_interfaces.ips\",\n                                    \"specific_data.data.os.type\",\n                                    \"labels\"\n                                ],\n                                \"coloumnSizes\": [],\n                                \"query\": {\n                                    \"filter\": \"not (\\\"specific_data.data.last_seen\\\" >= date(\\\"NOW - 30d\\\"))\",\n                                    \"expressions\": [\n                                        {\n                                            \"compOp\": \"days\",\n                                            \"field\": \"specific_data.data.last_seen\",\n                                            \"leftBracket\": 0,\n                                            \"logicOp\": \"\",\n                                            \"not\": true,\n                                            \"rightBracket\": 0,\n                                            \"value\": 30,\n                                            \"fieldType\": \"axonius\"\n                                        }\n                                    ]\n                                },\n                                \"sort\": {\n                                    \"field\": \"\",\n                                    \"desc\": true\n                                }\n                            },\n                            \"query_type\": \"saved\",\n                            \"timestamp\": {\n                                \"$date\": \"2022-05-26T20:21:14.863Z\"\n                            },\n                            \"user_id\": \"*\",\n                            \"updated_by\": \"*\",\n                            \"predefined\": true,\n                            \"private\": false,\n                            \"always_cached\": false,\n                            \"asset_scope\": false,\n                            \"folder_id\": {\n                                \"$oid\": \"625e0fc2d9636583ddc4a64c\"\n                            }\n                        }\n                    },\n                    \"dependencies\": {}\n                },\n                \"version\": \"\",\n                \"exported_at\": \"2022-05-26 21:23:49.637106\"\n            }\n       }\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/devices/views/import",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"devices",
+								"views",
+								"import"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
