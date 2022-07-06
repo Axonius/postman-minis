@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "d13c3cfd-0b8f-4820-9ab4-e70ce5d1fe61",
+		"name": "activity logs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "restricted to datetime range",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{api-key}}",
+						"type": "default"
+					},
+					{
+						"key": "api-secret",
+						"value": "{{api-secret}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/settings/audit?page[offset]=0&page[limit]=140&use_cache_entry=false&always_cached_query=false&date_from=2022-07-05T04:00:00Z&date_to=2022-07-07T03:59:59Z",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"settings",
+						"audit"
+					],
+					"query": [
+						{
+							"key": "page[offset]",
+							"value": "0"
+						},
+						{
+							"key": "page[limit]",
+							"value": "140"
+						},
+						{
+							"key": "use_cache_entry",
+							"value": "false"
+						},
+						{
+							"key": "always_cached_query",
+							"value": "false"
+						},
+						{
+							"key": "date_from",
+							"value": "2022-07-05T04:00:00Z"
+						},
+						{
+							"key": "date_to",
+							"value": "2022-07-07T03:59:59Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "unrestricted",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "{{api-key}}",
+						"type": "default"
+					},
+					{
+						"key": "api-secret",
+						"value": "{{api-secret}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/settings/audit?page[offset]=0&page[limit]=140&use_cache_entry=false&always_cached_query=false",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"settings",
+						"audit"
+					],
+					"query": [
+						{
+							"key": "page[offset]",
+							"value": "0"
+						},
+						{
+							"key": "page[limit]",
+							"value": "140"
+						},
+						{
+							"key": "use_cache_entry",
+							"value": "false"
+						},
+						{
+							"key": "always_cached_query",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
