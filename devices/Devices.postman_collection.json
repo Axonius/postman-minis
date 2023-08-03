@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3e125d76-73d6-40d4-baa5-f33f84ac99ee",
+		"_postman_id": "36279ee7-3cb4-48f7-91e6-eaca3c11e531",
 		"name": "Devices",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28757573"
 	},
 	"item": [
 		{
@@ -93,8 +94,36 @@
 		{
 			"name": "Devices",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"description": "(Required) ",
+						"key": "api-key",
+						"value": "{{api-key}}"
+					},
+					{
+						"description": "(Required) ",
+						"key": "api-secret",
+						"value": "{{api-secret}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.api+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"meta\": null,\n    \"data\": {\n        \"type\": \"entity_request_schema\",\n        \"attributes\": {\n            \"page\": {\n                \"offset\": 0,\n                \"limit\": 350\n            },\n            \"use_cache_entry\": false,\n            \"always_cached_query\": false,\n            \"fields\": {\n                \"devices\": [\n                    \"adapters\",\n                    \"specific_data.data.name\",\n                    \"specific_data.data.hostname\",\n                    \"specific_data.data.last_seen\",\n                    \"specific_data.data.network_interfaces.mac\",\n                    \"specific_data.data.network_interfaces.ips\",\n                    \"specific_data.data.os.type\",\n                    \"labels\"\n                ]\n            },\n            \"filter\": \"((\\\"specific_data.data.hostname\\\" == ({\\\"$exists\\\":true,\\\"$ne\\\":\\\"\\\"})))\",\n            \"get_metadata\": false,\n            \"include_details\": false,\n            \"complex_fields_preview_limit\": 10,\n            \"max_field_items\": 50\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{baseUrl}}/api/devices",
 					"host": [
@@ -104,26 +133,8 @@
 						"api",
 						"devices"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Devices Details",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{baseUrl}}/api/devices/{{ax_device_id}}",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"api",
-						"devices",
-						"{{ax_device_id}}"
-					]
-				}
+				},
+				"description": "Use this API to fetch devices according to the defined query"
 			},
 			"response": []
 		}
