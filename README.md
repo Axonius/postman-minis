@@ -1,5 +1,5 @@
 # Postman Minis
-Postman Minis is repository that shows how to use our REST API in small bite-sized collections.
+Postman Minis is a repository that shows how to use our REST API in small bite-sized collections.
 
 This should be considered a living repository so is always a work-in-progress.
 
